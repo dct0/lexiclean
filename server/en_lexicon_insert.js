@@ -2,11 +2,10 @@ const { MongoClient } = require("mongodb");
 require("dotenv/config"); // have access to .env
 const fs = require("fs");
 
-const URI = process.env.DB_CONNECTION;
+const { DB_HOST, DB_PORT, DB_NAME } = process.env;
+const URI = `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
 const client = new MongoClient(URI);
-
-console.log(`Running on URI ${URI}`);
 
 async function run() {
   try {
